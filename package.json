@@ -1,0 +1,25 @@
+{
+  "name": "redmodtweak-lang",
+  "displayName": "REDmodTweak Lang",
+  "description": "Syntax highlighting for REDmod '.tweak' files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "redmod-tweak",
+      "aliases": ["REDmodTweak", "redmod-tweak"],
+      "extensions": [".tweak"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "redmod-tweak",
+      "scopeName": "source.redmod-tweak",
+      "path": "./syntaxes/redmod-tweak.tmLanguage.json"
+    }]
+  }
+}

@@ -1,0 +1,260 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "REDmodTweak",
+	"patterns": [
+		{
+			"include": "#package-declaration"
+		},
+		{
+			"include": "#using-declaration"
+		},
+		{
+			"include": "#type"
+		},
+		{
+			"include": "#property-definition"
+		},
+		{
+			"include": "#tweak-definition"
+		}
+	],
+	"repository": {
+		"separator-comma": {
+			"match": ",",
+			"name": "punctuation.separator.package.redmod-tweak"
+		},
+        "strings": {
+            "name": "string.quoted.double.redmod-tweak",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [ ]
+        },
+        "numeric-literal": {
+            "match": "(?<=^|[\\[\\(,\\s<>=\\?:])-?(?:\\.?\\d+f?(?!\\.)|\\d+(?:\\.\\d*f?))\\b",
+            "name": "constant.numeric.redmod-tweak"
+        },
+		"boolean": {
+			"match": "(?<![_[:alnum:]])(true|false)\\b",
+			"name": "constant.language.boolean.redmod-tweak"
+		},
+		"primitives": {
+			"patterns": [
+				{
+					"include": "#numeric-literal"
+				},
+				{
+					"include": "#boolean"
+				},
+				{
+					"include": "#strings"
+				}
+			]
+		},
+		"array-literal": {
+			"name": "meta.array-members.redmod-tweak",
+			"begin": "\\[",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.redmod-tweak"
+				}
+			},
+			"end": "\\]",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.redmod-tweak"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#object-literal"
+				},
+				{
+					"include": "#primitives"
+				},
+				{
+					"include": "#separator-comma"
+				}
+			]
+		},
+		"object-literal": {
+			"name": "meta.object-members.redmod-tweak",
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.redmod-tweak"
+				}
+			},
+			"end": "(\\})(?:\\s+(:)\\s+([_[:alnum:]]+(?:\\.[_[:alnum:]]+)?\\b))?",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.block.redmod-tweak"
+				},
+				"2": {
+					"name": "keyword.operator.inheritance.redmod-tweak"
+				},
+				"3": {
+					"name": "entity.name.type.tweak.redmod-tweak"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#type"
+				},
+				{
+					"include": "#property-definition"
+				}
+			]
+		},
+        "type": {
+            "patterns": [
+                {
+                    "begin": "([_[:alnum:]]+)\\s*(<)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "storage.type.fk.redmod-tweak"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.sub-type.begin.redmod-tweak"
+                        }
+                    },
+                    "end": "(>)",
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.sub-type.end.redmod-tweak"
+                        }
+                    },
+                    "contentName": "meta.type.sub-type.redmod-tweak",
+                    "patterns": [
+                        {
+                            "include": "#type"
+                        }
+                    ]
+                },
+				{
+					"match": "(?<![_[:alnum:]])\\b(?:(float|bool|string|int|CName|LocKey|Vector(?:2|3)|ResRef|EulerAngles|Quaternion)|([_[:alnum:]]+))\\b(?:(?=\\s[_[:alnum:]]+|\\[|\\s*>))",
+					"captures": {
+						"1": {
+							"name": "storage.type.primitive.redmod-tweak"
+						},
+						"2": {
+							"name": "entity.name.type.redmod-tweak"
+						}
+					}	
+				},
+				{
+					"match": "(?<=[_[:alnum:]])\\[\\](?:(?=\\s+))",
+					"name": "keyword.operator.array.redmod-tweak"
+				}
+            ]
+        },
+		"package-declaration": {
+			"name": "meta.package.redmod-tweak",
+			"patterns": [
+				{
+					"match": "(?<![_[:alnum:]])(package\\b)(?:\\s+([_[:alnum:]]+))",
+					"captures": {
+						"1": {
+							"name": "storage.type.package.redmod-tweak"
+						},
+						"2": {
+							"name": "entity.name.type.package.redmod-tweak"
+						}
+					}
+				}
+			]
+		},
+		"using-declaration": {
+			"name": "meta.using.redmod-tweak",
+			"patterns": [
+				{
+					"begin": "(?<![_[:alnum:]])(using\\b)",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.other.using.redmod-tweak"
+						}
+					},
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"match": "(?<![_[:alnum:]])[_[:alnum:]]+\\b",
+							"name": "entity.name.type.package.redmod-tweak"
+						},
+						{
+							"include": "#separator-comma"
+						}
+					]
+				}
+			]
+		},
+		"property-definition": {
+			"name": "meta.property-definition.redmod-tweak",
+			"begin": "(?<![_[:alnum:]])(?:(?=[_[:alnum:]]+\\s+\\+?=))",
+			"end": "(?<=;)",
+			"patterns": [
+				{
+					"match": "(?<![_[:alnum:]])(AND|OR)\\b(?:(?=\\s+=))",
+					"name": "constant.language.operator-logic.redmod-tweak"
+				},
+				{
+					"match": "(?<![_[:alnum:]])([_[:alnum:]]+\\b)(?:(?=\\s+\\+?=))",
+					"name": "variable.name.property.redmod-tweak"
+				},
+				{
+					"match": "(\\+?=)",
+					"name": "keyword.operator.assignment.redmod-tweak"
+				},
+				{
+					"include": "#object-literal"
+				},
+				{
+					"include": "#array-literal"
+				},
+				{
+					"include": "#primitives"
+				}
+			]
+		},
+		"tweak-definition": {
+			"name": "meta.tweak-definition.redmod-tweak",
+			"begin": "(?<![_[:alnum:]])([_[:alnum:]]+\\b)(?:\\s+(:)\\s+([_[:alnum:]]+(?:\\.[_[:alnum:]]+)?\\b))?",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.type.tweak.redmod-tweak"
+				},
+				"2": {
+					"name": "keyword.operator.inheritance.redmod-tweak"
+				},
+				"3": {
+					"name": "entity.name.type.tweak.redmod-tweak"
+				}
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{
+                    "name": "meta.tweak-body.redmod-tweak",
+                    "begin": "\\{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.block.redmod-tweak"
+                        }
+                    },
+                    "end": "\\}",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.block.redmod-tweak"
+                        }
+                    },
+					"patterns": [
+						{
+							"include": "#type"
+						},
+						{
+							"include": "#property-definition"
+						}
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "source.redmod-tweak"
+}
