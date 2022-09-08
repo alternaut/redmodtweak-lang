@@ -15,10 +15,24 @@
 			"include": "#property-definition"
 		},
 		{
+			"include": "#generic-annotation"
+		},
+		{
 			"include": "#tweak-definition"
 		}
 	],
 	"repository": {
+		"generic-annotation": {
+			"match": "^\\[\\s+([_[:alnum:]]+)\\s+\\]",
+			"captures": {
+				"0": {
+					"name": "keyword.other.directive.redmod-tweak"
+				},
+				"1": {
+					"name": "support.constant.redmod-tweak"
+				}
+			}
+		},
 		"separator-comma": {
 			"match": ",",
 			"name": "punctuation.separator.package.redmod-tweak"

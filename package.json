@@ -2,6 +2,12 @@
   "name": "redmodtweak-lang",
   "displayName": "REDmodTweak Lang",
   "description": "Syntax highlighting for REDmod '.tweak' files",
+  "repository": {
+    "url": "https://github.com/alternaut/redmodtweak-lang",
+    "type": "git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/alternaut/redmodtweak-lang",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.71.0"
