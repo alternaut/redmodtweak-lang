@@ -1,3 +1,5 @@
+![redmodtweak-lang icon](resources/icon-128.png)
+(*now with terribly made icons!*)
 # REDmodTweak
 
 VSCode syntax highlighting for [REDmod](https://www.cyberpunk.net/en/modding-support) `'.tweak'` files.
