@@ -1,33 +1,48 @@
 {
-  "name": "redmodtweak-lang",
-  "displayName": "REDmodTweak Lang",
-  "description": "Syntax highlighting for REDmod '.tweak' files",
-  "repository": {
-    "url": "https://github.com/alternaut/redmodtweak-lang",
-    "type": "git"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/alternaut/redmodtweak-lang",
-  "publisher": "alternaut-dev",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.71.0"
-  },
-  "icon": "resources/icon-128.png",
-  "categories": [
-    "Programming Languages"
-  ],
-  "contributes": {
-    "languages": [{
-      "id": "redmod-tweak",
-      "aliases": ["REDmodTweak", "redmod-tweak"],
-      "extensions": [".tweak"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "redmod-tweak",
-      "scopeName": "source.redmod-tweak",
-      "path": "./syntaxes/redmod-tweak.tmLanguage.json"
-    }]
-  }
+    "name": "redmodtweak-lang",
+    "displayName": "REDmodTweak Lang",
+    "description": "Syntax highlighting for REDmod '.tweak' files",
+    "repository": {
+        "url": "https://github.com/alternaut/redmodtweak-lang",
+        "type": "git"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/alternaut/redmodtweak-lang",
+    "publisher": "alternaut-dev",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.71.0"
+    },
+    "icon": "resources/redmod_tweak_002.png",
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "tweak",
+        "Cyberpunk",
+        "REDmod",
+        "CDPR"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "redmod-tweak",
+                "aliases": [
+                    "REDmodTweak",
+                    "redmod-tweak"
+                ],
+                "extensions": [
+                    ".tweak"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "redmod-tweak",
+                "scopeName": "source.redmod-tweak",
+                "path": "./syntaxes/redmod-tweak.tmLanguage.json"
+            }
+        ]
+    }
 }
